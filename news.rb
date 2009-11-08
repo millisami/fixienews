@@ -17,6 +17,7 @@ def remote_load url
   open(url).read
 end
 
+# Maybe use haml view for this?
 def style_for_iphone text
   doc = Nokogiri::HTML(text)
 
