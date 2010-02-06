@@ -32,7 +32,7 @@ def style_for_iphone text
   html << '<h1 id="pageTitle"><a href="/">Y Combinator</a></h1>'
 
   html << '<ul selected="true">'
-  doc.css('tr').each do |row|
+  doc.css('table tr td table tr').each do |row|
     if story_title = row.css('td.title > a').first
       html << '<li>'
       html << "<a href='#{story_title['href']}'>#{story_title.content}</a>"
