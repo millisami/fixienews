@@ -6,16 +6,20 @@ specs:
     version: 0.9.4
 - nokogiri: 
     version: 1.4.1
-hash: b9892e6e177e1b83c9cfcb6b96a67cf9aad63ac3
+hash: 004151f1dd8b55587933863c2e788bfec669a687
 sources: 
 - Rubygems: 
     uri: http://gemcutter.org
 dependencies: 
   nokogiri: 
-    version: ">= 0"
+    version: = 1.4.1
     group: 
     - :default
   sinatra: 
-    version: ">= 0"
+    version: = 0.9.4
+    group: 
+    - :default
+  rack: 
+    version: = 1.1.0
     group: 
     - :default
