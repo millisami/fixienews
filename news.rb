@@ -12,6 +12,7 @@ end
 
 def cache_it
   headers['Cache-Control'] = 'public, max-age=60'
+  headers['Content-Type'] = 'text/html; charset=utf-8'
 end
 
 def remote_load url
