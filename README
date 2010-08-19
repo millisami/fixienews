@@ -12,7 +12,7 @@ INSTRUCTIONS
 
 
 2. Checkout source code to project
-git clone git://github.com/joevandyk/fixienews.git
+git clone git://github.com/joevandyk/fixienews.git && cd fixienews
 
 
 3. Install vagrant gem and download Ubuntu 10.04 (lucid)
