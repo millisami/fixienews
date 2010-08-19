@@ -1,0 +1,29 @@
+
+This is a sample application used to illustrate how to use chef-solo and bundler and vagrant.
+
+It installs a sinatra-powered iphone mirror of http://news.ycombinator.com.  Uses REE and Unicorn.
+
+Instructions for getting this installed on your machine.  Tested on OS X 10.6. Probably works on other OSs, let me know.
+
+
+1.  Install Virtual Box.  http://www.virtualbox.org/wiki/Downloads
+
+2. Checkout source code to project
+git clone git://github.com/joevandyk/fixienews.git
+
+3. Install vagrant gem and download Ubuntu 10.04 (lucid)
+gem install vagrant
+vagrant box add base http://files.vagrantup.com/lucid32.box
+
+4. Start the vagrant box, runs chef-solo, starts up the services
+vagrant up
+
+And that's it!  Go to http://192.168.10.35:8080 to view it.  Preferably with an iPhone.
+
+The key files to look at:
+Vagrantfile
+config/cookbooks/vagrant_main/recipes/default.rb
+
+You can now edit the recipe file and run "vagrant provision" in the root project directory, and you can see how the cookbooks will run.
+
+The gems (nokogiri, rack, unicorn, sinatra) have been bundled in the vendor directory via bundler 1.0.  No installation of the gems is necessary on the VM -- the only gem that's necessary to install is bundler (and it's installed via chef).
