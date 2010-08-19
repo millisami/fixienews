@@ -1,22 +1,32 @@
 
 This is a sample application used to illustrate how to use chef-solo and bundler and vagrant.
 
-It installs a sinatra-powered iphone mirror of http://news.ycombinator.com.  Uses REE and Unicorn.
+It installs a sinatra-powered iphone mirror of http://news.ycombinator.com.  Uses REE and Unicorn.  
 
-Instructions for getting this installed on your machine.  Tested on OS X 10.6. Probably works on other OSs, let me know.
+We use VirtualBox for a VM, and it's setup for you automatically (through the magic of Vagrant).  No more fussing with VMs.
 
+
+==========================================
+INSTRUCTIONS
 
 1.  Install Virtual Box.  http://www.virtualbox.org/wiki/Downloads
+
 
 2. Checkout source code to project
 git clone git://github.com/joevandyk/fixienews.git
 
+
 3. Install vagrant gem and download Ubuntu 10.04 (lucid)
 gem install vagrant
-vagrant box add base http://files.vagrantup.com/lucid32.box
+vagrant box add lucid32 http://files.vagrantup.com/lucid32.box
+
 
 4. Start the vagrant box, runs chef-solo, starts up the services
 vagrant up
+==========================================
+
+
+
 
 And that's it!  Go to http://192.168.10.35:8080 to view it.  Preferably with an iPhone.
 
