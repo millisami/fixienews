@@ -1,9 +1,8 @@
+This is a sample application used to illustrate how to use chef-solo and bundler and vagrant.  
 
-This is a sample application used to illustrate how to use chef-solo and bundler and vagrant.
+In four commands, you download a new linux VM, configure it with chef-solo, and start up a REE/Sinatra/Unicorn/Bundler iPhone mirror of http://news.ycombinator.com.
 
-It installs a sinatra-powered iphone mirror of http://news.ycombinator.com.  Uses REE and Unicorn.  
-
-We use VirtualBox for a VM, and it's setup for you automatically (through the magic of Vagrant).  No more fussing with VMs.
+You can then edit the chef cookbooks, run one command, and watch the VM use the new cookbooks.
 
 
 ==========================================
