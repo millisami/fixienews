@@ -1,25 +1,18 @@
---- 
-dependencies: 
-  rack: 
-    group: 
-    - :default
-    version: = 1.1.0
-  sinatra: 
-    group: 
-    - :default
-    version: = 0.9.4
-  nokogiri: 
-    group: 
-    - :default
-    version: = 1.4.1
-specs: 
-- rack: 
-    version: 1.1.0
-- sinatra: 
-    version: 0.9.4
-- nokogiri: 
-    version: 1.4.1
-hash: 004151f1dd8b55587933863c2e788bfec669a687
-sources: 
-- Rubygems: 
-    uri: http://gemcutter.org
+GEM
+  remote: http://rubygems.org/
+  specs:
+    nokogiri (1.4.3.1)
+    rack (1.2.1)
+    sinatra (1.0)
+      rack (>= 1.0)
+    unicorn (1.1.2)
+      rack
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  nokogiri
+  rack
+  sinatra
+  unicorn
