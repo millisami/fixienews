@@ -1,3 +1,4 @@
 .*sw*
-vendor/gems/
-!vendor/gems/cache/
+vendor/gems
+vendor/ruby
+.vagrant

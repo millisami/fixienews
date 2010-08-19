@@ -1,0 +1,62 @@
+# Installs some basic build tools.
+# This are used for the nokogiri gem.
+require_recipe "build-essential"
+
+# Install Ruby Enterprise Edition.
+require_recipe "ruby_enterprise"
+
+# Our favorite SCM, and XML packages needed for building 
+# the nokogiri ruby gem.
+%w( libxml2 libxslt1-dev git-core ).each do |pkg|
+  package pkg
+end
+
+# Set up the application directory
+%w( shared current ).each do |dir|
+  directory "/apps/fixienews/#{dir}" do
+    owner "vagrant"
+    group "vagrant"
+    recursive true
+  end
+end
+
+# Check out the source code to the application directory
+git "/apps/fixienews/current" do
+  repository "git://github.com/joevandyk/fixienews.git"
+  reference  "vagrant"
+  user  "vagrant"
+  group "vagrant"
+  action :sync
+end
+
+# Install bundler (http://gembundler.com/v1.0/index.html)
+# We're using a pre-release version here.
+ree_gem "bundler" do
+  options "--pre"
+  version "1.0.0.rc.5"
+end
+
+
+# Install the bundled gems
+execute "bundler" do
+  command "cd /apps/fixienews/current && bundle install ../shared/vendor --local --binstubs"
+  user  "vagrant"
+  group "vagrant"
+end
+
+# Create an Upstart Service file, so we can automatically 
+file "fixienews" do
+  path "/etc/init/fixienews.conf"
+  content <<-EOF
+  start on startup
+  respawn
+  chdir /apps/fixienews/current
+  exec su vagrant -c "./bin/unicorn"
+  EOF
+end
+
+service "fixienews" do
+  service_name 'fixienews'
+  action :start
+  provider Chef::Provider::Service::Upstart
+end
